@@ -1,8 +1,9 @@
 import React, { ReactNode } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ChakraLink, Spacer } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Image } from "@chakra-ui/react";
 
-import "./Header.css";
 import { ColorModeSwitcher } from "ColorModeSwitcher";
 
 type HeaderProps = {
@@ -17,30 +18,23 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
   };
 
   return (
-    <div className="header-container">
-      <div className="header-top-bar">
-        <Link to={"/"}>
-          <img className="header-logo-image" alt="logo" src="/img/doge.png" />
-        </Link>
-        <p className="header-site-name">아이거...</p>
-        <div>
-          <Button
-            style={{
-              backgroundColor: "rgb(61, 61, 61)",
-              fontFamily: "SUIT-ExtraBold",
-              color: "white",
-              fontSize: "20px",
-              width: "5rem",
-            }}
-            onClick={goToLoginPage}
-          >
-            로그인
-          </Button>
-          <ColorModeSwitcher />
-        </div>
-      </div>
+    <Flex m={3} minWidth="max-content" alignItems="center">
+      <ChakraLink as={ReactRouterLink} to="/">
+        <Image boxSize="80px" objectFit="cover" alt="logo" src="/img/doge.png" />
+      </ChakraLink>
+      <Spacer />
+      <Box p="2">
+        <Heading fontSize="4xl" colorScheme="green">
+          아이거...
+        </Heading>
+      </Box>
+      <Spacer />
+      <Button colorScheme="green" onClick={goToLoginPage}>
+        로그인
+      </Button>
+      <ColorModeSwitcher />
       {children}
-    </div>
+    </Flex>
   );
 };
 
