@@ -1,15 +1,14 @@
 import * as React from "react";
 import { ChakraProvider, theme } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./page/MainPage";
+import { UserLayout } from "./Layout";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <ColorModeSwitcher justifySelf="flex-end" />
     <BrowserRouter>
       <Routes>
-        <Route>
+        <Route element={<UserLayout />}>
           <Route path="/" element={<MainPage />} />
         </Route>
       </Routes>
