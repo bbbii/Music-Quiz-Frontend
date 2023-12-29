@@ -1,8 +1,19 @@
 import React from "react";
-import "./MainPage.css";
+import { Box, Flex } from "@chakra-ui/react";
 
 const MainPage = () => {
-  return <div className="main-page-container">MainPage</div>;
+  return (
+    <Flex justifyContent="center">
+      <Box
+        style={{
+          paddingTop: "10rem",
+          height: "50vh",
+        }}
+      >
+        MainPage
+      </Box>
+    </Flex>
+  );
 };
 
 export default MainPage;
